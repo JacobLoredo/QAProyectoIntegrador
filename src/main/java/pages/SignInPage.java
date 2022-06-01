@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 
 import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
@@ -15,6 +17,11 @@ public class SignInPage extends BasePage {
     By inputEmailRegistered = By.xpath("//input[@name='email']");
     By createAccountButton = By.xpath("//button[@id='SubmitCreate']");
     By submitLoginButton = By.xpath("//button[@id='SubmitLogin']");
+    By errorList= By.xpath("//div[@class='alert alert-danger']/ol/child::li");
+    String arrErrors[] =
+            {
+                    "An account using this email address has already been registered. Please enter a valid password or request a new one."
+            };
     public SignInPage(WebDriver driver){
         super(driver);
     }
@@ -42,6 +49,20 @@ public class SignInPage extends BasePage {
     public void clickInitSessionButton(){
         WebElement SessionButton= driver.findElement(this.submitLoginButton);
         SessionButton.click();
+    }
+    public boolean checkError(String Error){
+        List<WebElement> errorsList = driver.findElements(this.errorList);
+        boolean isError=false;
+        LOGGER.log(Level.INFO, "check Error: "+Error);
+        for(int i=0;i<errorsList.size();i++){
+
+            if(errorsList.get(i).getText().contains(Error)){
+                isError=true;
+                LOGGER.log(Level.INFO, "option selected: "+errorsList.get(i).getText());
+                break;
+            }
+        }
+        return isError;
     }
 
 }

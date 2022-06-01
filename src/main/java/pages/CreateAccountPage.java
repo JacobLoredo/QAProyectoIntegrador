@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -14,6 +16,7 @@ import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 public class CreateAccountPage extends BasePage {
 
     By titleCreateAccount = By.xpath("//h3[contains(text(),'Your personal information')]");
+    By errorList= By.xpath("//div[@class='alert alert-danger']/ol/child::li");
     By genderInputs = By.xpath("//input[@name='id_gender']");
     By inputFirstNameCustomer = By.xpath("//input[@name='customer_firstname']");
     By inputLastNameCustomer = By.xpath("//input[@name='customer_lastname']");
@@ -27,11 +30,26 @@ public class CreateAccountPage extends BasePage {
     By inputCity = By.xpath("//input[@name='city']");
     By inputState = By.xpath("//select[@name='id_state']");
     By inputZip = By.xpath("//input[@name='postcode']");
-    //By inputCountry = By.xpath("//input[@name='postcode']");
+    By inputCountry = By.xpath("//select[@name='id_country']");
     By inputMobilePhone = By.xpath("//input[@name='phone_mobile']");
     By inputAliasAddress = By.xpath("//input[@name='alias']");
     By buttonRegister = By.xpath("//button[@name='submitAccount']");
     By registerSuccess= By.xpath("//p[contains(text(),'Welcome to your account. Here you can manage all of your personal information and orders.')]");
+
+    String arrErrors[] =
+            {
+                    "You must register at least one phone number.",
+                    "Last name is required.",
+                    "First name is required.",
+                    "Password is required.",
+                    "Country is required.",
+                    "Address is required.",
+                    "City is required.",
+                    "Country is invalid",
+                    "Password is invalid."
+
+
+    };
     public CreateAccountPage(WebDriver driver){
         super(driver);
     }
@@ -160,5 +178,24 @@ public class CreateAccountPage extends BasePage {
         LOGGER.log(Level.INFO, "init validateCreateAccount");
         WebElement messageSuccess = driver.findElement(this.registerSuccess);
         return  messageSuccess.isDisplayed();
+    }
+    public boolean checkError(String Error){
+        List<WebElement> errorsList = driver.findElements(this.errorList);
+        boolean isError=false;
+        LOGGER.log(Level.INFO, "check Error: "+Error);
+        for(int i=0;i<errorsList.size();i++){
+
+            if(errorsList.get(i).getText().contains(Error)){
+                isError=true;
+                LOGGER.log(Level.INFO, "option selected: "+errorsList.get(i).getText());
+                break;
+            }
+        }
+        return isError;
+    }
+    public void putCountry(String Country){
+        Select countryDropdown = new Select(driver.findElement(this.inputCountry));
+        countryDropdown.selectByVisibleText(Country);
+
     }
 }
