@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd566349-1693-4308-88da-befd21089e26" name="Changes" comment="Base files, file test and pages added">
+    <list default="true" id="cd566349-1693-4308-88da-befd21089e26" name="Changes" comment="3 Test case created, create new account, create new account without data and create user with email used">
+      <change afterPath="$PROJECT_DIR$/src/main/java/pages/MyAccountPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/CreateAccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/CreateAccountPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/HomePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/SignInPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/SignInPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/CaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CaseTest.java" afterDir="false" />
     </list>
@@ -37,22 +39,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="TestNG.CaseTest.validateCreateNewAccountWithEmailUsed">
-    <configuration name="CaseTest.validateClickContactUs" type="TestNG" temporary="true" nameIsGenerated="true">
+}</component>
+  <component name="RunManager" selected="TestNG.CaseTest.validateAddMultiplesItemsToCart">
+    <configuration name="CaseTest.test" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="QAProyectoIntegrador" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="CaseTest" />
-      <option name="METHOD_NAME" value="validateClickContactUs" />
+      <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -60,11 +62,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CaseTest.validateCreateNewAccountWithEmailUsed" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="CaseTest.validateAddMultiplesItemsToCart" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="QAProyectoIntegrador" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="CaseTest" />
-      <option name="METHOD_NAME" value="validateCreateNewAccountWithEmailUsed" />
+      <option name="METHOD_NAME" value="validateAddMultiplesItemsToCart" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -72,11 +74,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CaseTest.validateCreateNewAccountWithoutData" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="CaseTest.validateInitSessionSuccess" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="QAProyectoIntegrador" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="CaseTest" />
-      <option name="METHOD_NAME" value="validateCreateNewAccountWithoutData" />
+      <option name="METHOD_NAME" value="validateInitSessionSuccess" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CaseTest.validateInitSessionWithIncorrectPassword" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="QAProyectoIntegrador" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CaseTest" />
+      <option name="METHOD_NAME" value="validateInitSessionWithIncorrectPassword" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CaseTest.validateInitSessionWithoutData" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="QAProyectoIntegrador" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CaseTest" />
+      <option name="METHOD_NAME" value="validateInitSessionWithoutData" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -86,9 +112,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.CaseTest.validateCreateNewAccountWithEmailUsed" />
-        <item itemvalue="TestNG.CaseTest.validateCreateNewAccountWithoutData" />
-        <item itemvalue="TestNG.CaseTest.validateClickContactUs" />
+        <item itemvalue="TestNG.CaseTest.validateAddMultiplesItemsToCart" />
+        <item itemvalue="TestNG.CaseTest.test" />
+        <item itemvalue="TestNG.CaseTest.validateInitSessionWithIncorrectPassword" />
+        <item itemvalue="TestNG.CaseTest.validateInitSessionWithoutData" />
+        <item itemvalue="TestNG.CaseTest.validateInitSessionSuccess" />
       </list>
     </recent_temporary>
   </component>
@@ -115,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654105991114</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="3 Test case created, create new account, create new account without data and create user with email used">
+      <created>1654113907439</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654113907439</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -132,6 +167,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init project" />
     <MESSAGE value="Base files, file test and pages added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Base files, file test and pages added" />
+    <MESSAGE value="3 Test case created, create new account, create new account without data and create user with email used" />
+    <option name="LAST_COMMIT_MESSAGE" value="3 Test case created, create new account, create new account without data and create user with email used" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/QAProyectoIntegrador$CaseTest_validateAddMultiplesItemsToCart.ic" NAME="CaseTest.validateAddMultiplesItemsToCart Coverage Results" MODIFIED="1654126180172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

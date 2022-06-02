@@ -36,20 +36,6 @@ public class CreateAccountPage extends BasePage {
     By buttonRegister = By.xpath("//button[@name='submitAccount']");
     By registerSuccess= By.xpath("//p[contains(text(),'Welcome to your account. Here you can manage all of your personal information and orders.')]");
 
-    String arrErrors[] =
-            {
-                    "You must register at least one phone number.",
-                    "Last name is required.",
-                    "First name is required.",
-                    "Password is required.",
-                    "Country is required.",
-                    "Address is required.",
-                    "City is required.",
-                    "Country is invalid",
-                    "Password is invalid."
-
-
-    };
     public CreateAccountPage(WebDriver driver){
         super(driver);
     }

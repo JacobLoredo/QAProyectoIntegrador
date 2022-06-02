@@ -1,12 +1,11 @@
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pages.ContactUsPage;
-import pages.CreateAccountPage;
-import pages.HomePage;
-import pages.SignInPage;
+import pages.*;
 import bases.BaseTest;
 
 public class CaseTest extends BaseTest{
+
 
     /*
     * ID: Test case 1
@@ -46,6 +45,7 @@ public class CaseTest extends BaseTest{
         waitForNSeconds(3);
         Assert.assertTrue(createAccountPage.validateCreateAccount());
 
+
     }
 
     /*
@@ -53,7 +53,7 @@ public class CaseTest extends BaseTest{
      * Requirement reference: Req01
      * Description: Register a new user WithoutData
      */
-    @Test(priority = 2)
+    @Test(priority = 1)
     public void validateCreateNewAccountWithoutData(){
         HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.validateHomeLogoIsDisplayed());
@@ -93,7 +93,7 @@ public class CaseTest extends BaseTest{
      * Requirement reference: Req01
      * Description: Register a new user with email already registered
      */
-    @Test(priority = 3)
+    @Test(priority = 2)
     public void validateCreateNewAccountWithEmailUsed(){
         HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.validateHomeLogoIsDisplayed());
@@ -109,5 +109,91 @@ public class CaseTest extends BaseTest{
         //Check if error email already registered
         Assert.assertTrue(signInPage.checkError("An account using this email address has already been registered. Please enter a valid password or request a new one."));
 
+    }
+    /*
+     * ID: Test case 4
+     * Requirement reference: Req01
+     * Description: Init session with the correct credentials
+     */
+    @Test(priority = 1)
+    public void validateInitSessionSuccess(){
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.validateHomeLogoIsDisplayed());
+        homePage.clickSignIn();
+        waitForNSeconds(1);
+        Assert.assertTrue(homePage.isSignInPage());
+
+        SignInPage signInPage = new SignInPage(driver);
+        Assert.assertTrue(signInPage.isSignInPage());
+        Assert.assertTrue(isEmail(signInPage.setInputEmailRegistered("yeicob_loredo@hotmail.com")));
+        Assert.assertTrue(isValidPassword(signInPage.putPassword("12345")));
+        signInPage.clickInitSessionButton();
+        waitForNSeconds(3);
+
+        MyAccountPage myAccountPage = new MyAccountPage(driver);
+        Assert.assertTrue(myAccountPage.isMyAccountPage());
+    }
+    /*
+     * ID: Test case 5
+     * Requirement reference: Req01
+     * Description: Init session without data
+     */
+    @Test(priority = 3)
+    public void validateInitSessionWithoutData(){
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.validateHomeLogoIsDisplayed());
+        homePage.clickSignIn();
+        waitForNSeconds(1);
+        Assert.assertTrue(homePage.isSignInPage());
+
+        SignInPage signInPage = new SignInPage(driver);
+        Assert.assertTrue(signInPage.isSignInPage());
+        signInPage.clickInitSessionButton();
+        waitForNSeconds(1);
+        Assert.assertTrue(signInPage.checkError("An email address required."));
+        Assert.assertTrue(signInPage.checkError("An password required."));
+    }
+    /*
+     * ID: Test case 6
+     * Requirement reference: Req01
+     * Description: Init session with correct email and wrong password
+     */
+    @Test(priority = 3)
+    public void validateInitSessionWithIncorrectPassword(){
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.validateHomeLogoIsDisplayed());
+        homePage.clickSignIn();
+        waitForNSeconds(1);
+        Assert.assertTrue(homePage.isSignInPage());
+
+        SignInPage signInPage = new SignInPage(driver);
+        Assert.assertTrue(signInPage.isSignInPage());
+        Assert.assertTrue(isEmail(signInPage.setInputEmailRegistered("yeicob_loredo@hotmail.com")));
+        Assert.assertTrue(isValidPassword(signInPage.putPassword("12345122")));
+        signInPage.clickInitSessionButton();
+        waitForNSeconds(3);
+        Assert.assertTrue(signInPage.checkError("Authentication failed."));
+
+    }
+
+    /*
+     * ID: Test case 7
+     * Requirement reference: Req02
+     * Description: add multiples items to cart
+     */
+    @Test(priority = 1)
+    public void validateAddMultiplesItemsToCart(){
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.addProductCart("Faded Short Sleeve T-shirts"));
+        waitForNSeconds(5);
+        Assert.assertTrue(homePage.isLayerCartVisible());
+        homePage.closeLayerCart();
+        waitForNSeconds(2);
+        Assert.assertTrue(homePage.addProductCart("Blouse"));
+        waitForNSeconds(5);
+        Assert.assertTrue(homePage.isLayerCartVisible());
+        homePage.closeLayerCart();
+        waitForNSeconds(2);
+        Assert.assertEquals(2,homePage.quantityItemsCart());
     }
 }
